@@ -1,5 +1,4 @@
 body {
-    background-color: darkblue;
     margin: 0;
     padding: 0px 100px;
 }
@@ -7,40 +6,48 @@ body {
 .header {
     padding: 20px 0px;
     text-align: center;
-    color: yellow;
+    color: mediumblue;
 }
 
 .horizontal_menu {
-    background-color: aliceblue;
+    background-color: #333;
+    color: white;
     padding: 0;
+    font-size: 0px;
 }
 
 .main_rubric {
     display: inline-block;
     text-align: center;
     width: 25%;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    position: relative;
 }
 
 .secondary_rubrics {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: #ddd;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.secondary_rubrics a {
+    padding: 8px 0;
+    width: 100%;
+    display: block;
 }
 
 .main_rubric:hover {
-    background-color: mediumblue;
+    background-color: #555;
 }
 
 .main_rubric:hover .secondary_rubrics {
     display: block;
 }
 
-.secondary_rubrics {
-    display: none;
-}
-
-.secondary_rubrics a {
-    margin: 5px;
-    display: block;
-    text-align: left;
+.secondary_rubrics a:hover {
+    background-color: #ccc;
 }
