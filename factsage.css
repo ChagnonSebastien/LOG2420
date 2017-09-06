@@ -1,6 +1,7 @@
 body {
     background-color: darkblue;
     margin: 0;
+    padding: 0px 100px;
 }
 
 .header {
@@ -11,12 +12,35 @@ body {
 
 .horizontal_menu {
     background-color: aliceblue;
+    padding: 0;
 }
 
 .main_rubric {
     display: inline-block;
+    text-align: center;
+    width: 25%;
 }
 
 .secondary_rubrics {
     display: none;
+    position: absolute;
+    background-color: white;
+}
+
+.main_rubric:hover {
+    background-color: mediumblue;
+}
+
+.main_rubric:hover .secondary_rubrics {
+    display: block;
+}
+
+.secondary_rubrics {
+    display: none;
+}
+
+.secondary_rubrics a {
+    margin: 5px;
+    display: block;
+    text-align: left;
 }
