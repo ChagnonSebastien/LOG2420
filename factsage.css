@@ -1,0 +1,22 @@
+body {
+    background-color: darkblue;
+    margin: 0;
+}
+
+.header {
+    padding: 20px 0px;
+    text-align: center;
+    color: yellow;
+}
+
+.horizontal_menu {
+    background-color: aliceblue;
+}
+
+.main_rubric {
+    display: inline-block;
+}
+
+.secondary_rubrics {
+    display: none;
+}
