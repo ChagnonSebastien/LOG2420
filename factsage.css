@@ -62,3 +62,19 @@ body {
 .secondary_rubrics a:hover {
     background-color: #ccc;
 }
+
+.vertical_menu {
+	border-style: groove;
+	text-align: center;
+	line-height: 2.0;
+	}
+
+.vertical_links a: link, .vertical_links a:hover{
+	text-decoration: none;
+	}
+
+.vertical_links a:hover{
+	display: block;
+	background-color: #ccc;
+	}
+
