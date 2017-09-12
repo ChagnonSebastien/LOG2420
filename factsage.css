@@ -1,15 +1,43 @@
+html {
+    height: 100%;
+    padding: 0px 100px;
+    background: linear-gradient(darkblue, black);
+}
+
 body {
     margin: 0;
-    padding: 0px 100px;
+    position: relative;
+    height: 100%;
+    min-width:900px;
 }
 
 .header {
-    padding: 20px 0px;
+    position: relative;
+    min-height: 10%;
+    height: 10%;
+    font-size: 2em;
+    font-weight: bold;
     text-align: center;
-    color: mediumblue;
 }
 
-.horizontal_menu {
+.header div {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.content {
+    height: 85%;
+    min-height: 680px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.horizontal_navbar {
     background-color: #333;
     color: white;
     padding: 0;
@@ -17,64 +45,68 @@ body {
     width: 100%;
 }
 
-.main_rubric {
+.horizontal_navbar_element {
     display: inline-block;
     text-align: center;
-    width: 25%;
+    width: 20%;
     margin: 0;
     padding: 16px 0;
     font-size: 16px;
     position: relative;
 }
 
-.secondary_rubrics {
-    display: none;
-    position: absolute;
-    background-color: #ddd;
-    margin-top: 16px;
-    width: 100%;
-}
-
-.secondary_rubrics a {
-    padding: 8px 0;
-    width: 100%;
-    display: block;
-}
-
-.secondary_rubrics a:link , .secondary_rubrics a:visited, .secondary_rubrics a:hover {
-    color: black;
-    text-decoration: none;
-}
-
-.secondary_rubrics a:active {
-    color: #777;
-    text-decoration: none;
-}
-
-.main_rubric:hover {
+.horizontal_navbar_element:hover {
     background-color: #555;
 }
 
-.main_rubric:hover .secondary_rubrics {
+.horizontal_navbar_dropdown {
+    display: none;
+    position: absolute;
+    background-color: #ddd;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.horizontal_navbar_element:hover .horizontal_navbar_dropdown {
     display: block;
 }
 
-.secondary_rubrics a:hover {
+.horizontal_navbar_dropdown a {
+    padding: 8px 0;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.horizontal_navbar_dropdown a:hover {
     background-color: #ccc;
 }
 
+.horizontal_navbar_dropdown a:active {
+    color: #777;
+}
+
 .vertical_menu {
-	border-style: groove;
-	text-align: center;
-	line-height: 2.0;
-	}
+    float: right;
+    position: relative;
+    background-color: #333;
+    width: 20%;
+    height: 100%;
+}
 
-.vertical_links a: link, .vertical_links a:hover{
-	text-decoration: none;
-	}
+.vertical_menu a {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
 
-.vertical_links a:hover{
-	display: block;
-	background-color: #ccc;
-	}
+.vertical_menu a:hover {
+    background-color: #555;
+}
 
+.vertical_menu a:active {
+    color: #ccc;
+}
