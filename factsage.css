@@ -14,7 +14,8 @@ body {
 .header {
     position: relative;
     min-height: 10%;
-    height: 10%;
+    height: 13%;
+    padding: 1%;
     font-size: 2em;
     font-weight: bold;
     text-align: center;
@@ -31,7 +32,7 @@ body {
 }
 
 .content {
-    height: 85%;
+    height: 75%;
     min-height: 680px;
     overflow: hidden;
     background-color: white;
