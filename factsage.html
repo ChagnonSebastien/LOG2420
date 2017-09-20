@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="factsage.css">
         <title>Title</title>
+        <script src="factsage.js"></script>
     </head>
     <body>
 
-
         <div class="header">
-            <img src="factsage_icon.png" alt="logo de factsage">
+            <img src="factsage_icon.png" alt="logo de factsage" height="90%">
         </div>
 
         <div class="content">
@@ -17,7 +17,7 @@
                 <li class="horizontal_navbar_element">
                     <label for="info">Info</label>
                     <div class="horizontal_navbar_dropdown">
-                        <a href="#">General</a>
+                        <div onclick="loadXMLDoc('fs_general.html')">General</div>
                     </div>
                 </li>
                 <li class="horizontal_navbar_element">
@@ -32,7 +32,7 @@
                 <li class="horizontal_navbar_element">
                     <label for="calculate">Calculate</label>
                     <div class="horizontal_navbar_dropdown">
-                        <a href="#">Reaction</a>
+                        <a onclick="loadXMLDoc('fs_reaction.html')">Reaction</a>
                         <a href="#">Predom</a>
                         <a href="#">EpH</a>
                         <a href="#">Equilib</a>
@@ -72,14 +72,8 @@
                 </div>
             </div>
 
-            <div class="view">
-                erwtoweirtjwerg wergwergkewrg werg werg wergwerjgkerfhaeuignewrkjgnwergwejkrg weg wergkwergowerg wejrkg qerg
-                ewrgjrtjwerg wergwergkewrg werg werg wergwerjgkerfhaeuignewrkjgnwergwejkrg weg wergkwergowerg wejrkg qerg
-                ewrgjwrtjwerg wergwergkewrg werg werg wergwerjgkerfhaeuignewrkjgnwergwejkrg weg wergkwergowerg wejrkg qerg
-                ewrgjwrtjwerg wergwergkewrg werg werg wergwerjgkerfhaeuignewrkjgnwergwejkrg weg wergkwergowerg wejrkg qerg
-                ewrgjwrtjwerg wergwergkewrg werg werg wergwerjgkerfhaeuignewrkjgnwergwejkrg weg wergkwergowerg wejrkg qerg
-                ewrgjwrtjwerg wergwergkewrg werg werg wergwerjgkerfhaeuignewrkjgnwergwejkrg weg wergkwergowerg wejrkg qerg
-                ewrgjwwerogeqrgqe rgower goeirg werigewoirgwergiowejgoijergow ergowiergjwergijewrgowe rgwerigoweirjgwoeirgwerg
+            <div id="view">
+                <img src="chaton.jpg" alt="minou <3" width="100%">
             </div>
         </div>
     </body>
