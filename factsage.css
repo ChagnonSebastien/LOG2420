@@ -1,3 +1,10 @@
+/****************************************************************************
+*    Nom ......... : factsage.css                                           *
+*    Auteur ...... : Sébastien Chagnon #1804702, Geneviève Laroche #1827516 *
+*    Rôle ........ : Interface du site factsage.com                         *    
+*****************************************************************************/
+
+
 html {
     height: 100%;
     padding: 0px 100px;
@@ -37,6 +44,9 @@ body {
     overflow: hidden;
     background-color: white;
 }
+/*********************************************************************************
+*                        Barre de navigation horizontale                         *
+**********************************************************************************/
 
 .horizontal_navbar {
     background-color: #333;
@@ -87,6 +97,10 @@ body {
 .horizontal_navbar_dropdown div:active {
     color: #777;
 }
+
+/*********************************************************************************
+*                        Barre de navigation verticale                           *
+**********************************************************************************/
 
 .vertical_menu {
     float: right;

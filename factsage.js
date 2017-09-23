@@ -1,3 +1,9 @@
+/****************************************************************************
+*    Nom ......... : factsage.js                                            *
+*    Auteur ...... : Sébastien Chagnon #1804702, Geneviève Laroche #1827516 *
+*    Rôle ........ : Interface du site factsage.com                         *    
+*****************************************************************************/
+
 function loadXMLDoc(file) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
