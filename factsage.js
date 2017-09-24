@@ -1,7 +1,7 @@
 /****************************************************************************
 *    Nom ......... : factsage.js                                            *
-*    Auteur ...... : Sébastien Chagnon #1804702, Geneviève Laroche #1827516 *
-*    Rôle ........ : Interface du site factsage.com                         *    
+*    Auteur ...... : Sebastien Chagnon #1804702, Genevieve Laroche #1827516 *
+*    Role ........ : Interface du site factsage.com                         *    
 *****************************************************************************/
 
 function loadXMLDoc(file) {
