@@ -28,14 +28,8 @@ body {
     text-align: center;
 }
 
-.header div {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translate(0, -50%);
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
+.header img {
+    height: 90%
 }
 
 /*********************************************************************************
