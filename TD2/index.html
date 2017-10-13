@@ -1,77 +1,87 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-        
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
-        <script type="text/javascript" charset="utf8" src="main.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
-    </head>
-    <body>
-        <nav class="navbar navbar-dark bg-primary">
-            <a class="titre navbar-brand" href="#">
-                Vélo Montréal
-            </a>
-            <a class="titre navbar-brand" href="#">
-                Vélo Montréal
-            </a>
-        </nav>
-        <div class="container">
-           
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#map">Carte des stations</a></li>
-                <li><a data-toggle="tab" href="#list">Liste des stations</a></li>
+    <script type="text/javascript" charset="utf8" src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a style="color:white;" class="titre navbar-brand" href="#"> Vélo Montréal </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a style="color: white; background-color: #2450a8; font-size:90%;" href="#">Accueil</a></li>
             </ul>
-        
-            <div class="tab-content">
-                <div id="map" class="tab-pane fade in active">
-                    <div class="row">
-                        <div class="column col-6 col-md-4">
-                            <input type="text" class="form-control">
-                            <br>
-                            <h3>Localisation:</h3>
-                            Aucune Sélection
-                        </div>
-                        <div class="column col-12 col-md-8">
-                            <h3>État de la station de vélo</h3>
-                            <table>
-                                <tr class="impair">
-                                    <td>ID Station</td>
-                                    <td>nbr</td>
-                                    <td>Vélos disponibles</td>
-                                    <td>nbm</td>
-                                </tr>
-                                <tr>
-                                    <td>Bloquée</td>
-                                    <td>bool</td>
-                                    <td>Bornes disponibles</td>
-                                    <td>nbm</td>
-                                </tr>
-                                <tr class="impair">
-                                    <td>Suspendue</td>
-                                    <td>bool</td>
-                                    <td>Vélos indisponibles</td>
-                                    <td>nbm</td>
-                                </tr>
-                                <tr>
-                                    <td>Hors Service</td>
-                                    <td>bool</td>
-                                    <td>Bornes indisponibles</td>
-                                    <td>nbm</td>
-                                </tr>
-                            </table>
-                        </div>
+            <a class="nav navbar-nav navbar-right" href="#">
+                <i style="color: white; padding-top: 10px; padding-right:20px;" class="fa fa-globe fa-2x" aria-hidden="true"></i>
+            </a>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#map">Carte des stations</a></li>
+            <li><a data-toggle="tab" href="#list">Liste des stations</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="map" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="column col-6 col-md-4">
+                        <input type="text" class="form-control">
+                        <br>
+                        <h3>Localisation:</h3>
+                        Aucune Sélection
+                    </div>
+                    <div class="column col-12 col-md-8">
+                        <h3>État de la station de vélo</h3>
+                        <table>
+                            <tr class="impair">
+                                <td>ID Station</td>
+                                <td>nbr</td>
+                                <td>Vélos disponibles</td>
+                                <td>nbm</td>
+                            </tr>
+                            <tr>
+                                <td>Bloquée</td>
+                                <td>bool</td>
+                                <td>Bornes disponibles</td>
+                                <td>nbm</td>
+                            </tr>
+                            <tr class="impair">
+                                <td>Suspendue</td>
+                                <td>bool</td>
+                                <td>Vélos indisponibles</td>
+                                <td>nbm</td>
+                            </tr>
+                            <tr>
+                                <td>Hors Service</td>
+                                <td>bool</td>
+                                <td>Bornes indisponibles</td>
+                                <td>nbm</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div id="list" class="tab-pane fade">
-                    <h3>LISTE</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
+            </div>
+            <div id="list" class="tab-pane fade">
+                <h3>LISTE</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

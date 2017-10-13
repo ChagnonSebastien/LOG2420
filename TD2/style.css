@@ -2,10 +2,18 @@
     font-weight: bold;
 }
 
+.navbar-default {
+    color: white;
+    background-color: #3399ff;
+ }
+
+
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
     background-color: #6DD84D;
     color: white;
 }
+
+
 
 .nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover{
     font-weight: bold;
