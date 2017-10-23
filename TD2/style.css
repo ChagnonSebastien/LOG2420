@@ -1,0 +1,48 @@
+.titre {
+    font-weight: bold;
+}
+
+.navbar-default {
+    color: white;
+    background-color: #3399ff;
+ }
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    background-color: #6DD84D;
+    color: white;
+}
+
+
+
+.nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover{
+    font-weight: bold;
+}
+
+.column {
+    padding: 30px 50px;
+}
+
+.column>h3 {
+    color: #5252B1;
+    padding-bottom: 5px;
+    margin-top: 0;
+    border-bottom: 1px white solid;
+}
+
+table {
+    width: 100%;
+    border-top: 8px #5252B1 solid;
+}
+
+table td {
+    width: 25%;
+}
+
+table tr {
+    height: 2em;
+}
+
+.impair {
+    background-color: #eee;
+}
