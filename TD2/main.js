@@ -11,13 +11,35 @@ function initialize() {
 
 google.maps.event.addDomListener(window, "load", initialize);
 
+var bixiData;
+var availableTags;
+
 $.getJSON('https://secure.bixi.com/data/stations.json', function(data) {
-    var availableTags = data.stations.map((station) => {
+    bixiData = data;
+
+    availableTags = data.stations.map((station) => {
         return station.s;
     });
 
     $( "#tags" ).autocomplete(
-        { source: availableTags }
+        {
+            source: availableTags,
+            select: function( event, ui ) {updateStation(ui.item.value)}
+        }
     );
 });
-  
+
+function updateStation(name) {
+    var index = this.getIndex(name);
+    var stationInformation = this.getStationInformations(index);
+    console.log(stationInformation);
+}
+
+function getIndex(stationName) {
+    return availableTags.indexOf(stationName);
+}
+
+function getStationInformations(index) {
+    console.log(bixiData);
+    return bixiData.stations[index];
+}
