@@ -3,10 +3,21 @@ function initialize() {
     var myOptions = {
         zoom: 10,
         center: latlng,
-        mapTypeId: google.maps.MapTypeId.SATELLITE
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map"),
             myOptions);
 }
 
 google.maps.event.addDomListener(window, "load", initialize);
+
+$.getJSON('https://secure.bixi.com/data/stations.json', function(data) {
+    var availableTags = data.stations.map((station) => {
+        return station.s;
+    });
+
+    $( "#tags" ).autocomplete(
+        { source: availableTags }
+    );
+});
+  
