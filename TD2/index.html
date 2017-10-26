@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Bixi Kelper</title>
+    <title>Bixi Helper</title>
     <meta charset="utf-8">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -46,40 +46,39 @@
             <div id="search" class="tab-pane fade in active">
                 <div class="row">
                     <div class="column col-6 col-md-4">
-                            <div class="ui-widget">
-                                <label for="tags">Tags: </label>
-                                <input id="tags">
-                            </div>
+                        <div class="ui-widget">
+                            <input id="tags" class="form-control" placeholder="ex: du Mont-Royal / du Parc">
+                        </div>
                         <br>
-                        <h3>Localisation:</h3>
+                        <h3 class="underlined">Localisation:</h3>
                         <span id="station_name">Aucune Sélection</span>
                     </div>
-                    <div class="column col-12 col-md-8">
+                    <div class="column left-sidelined col-12 col-md-8">
                         <h3>État de la station de vélo</h3>
                         <table>
                             <tr class="impair">
-                                <td>ID Station</td>
-                                <td id="station_id">nbr</td>
-                                <td>Vélos disponibles</td>
-                                <td id="bikes_available">nbm</td>
+                                <td class="table_label">ID Station</td>
+                                <td class="table_value" id="station_id"><span class="bubble_grey">-</span></td>
+                                <td class="table_label">Vélos disponibles</td>
+                                <td class="table_value" id="bikes_available"><span class="bubble_grey">-</span></td>
                             </tr>
                             <tr>
-                                <td>Bloquée</td>
-                                <td id="station_blocked">bool</td>
-                                <td>Bornes disponibles</td>
-                                <td id="bornes_available">nbm</td>
+                                <td class="table_label">Bloquée</td>
+                                <td class="table_value" id="station_blocked"><span class="bubble_grey">-</span></td>
+                                <td class="table_label">Bornes disponibles</td>
+                                <td class="table_value" id="bornes_available"><span class="bubble_grey">-</span></td>
                             </tr>
                             <tr class="impair">
-                                <td>Suspendue</td>
-                                <td id="station_suspended">bool</td>
-                                <td>Vélos indisponibles</td>
-                                <td id="bikes_unavailable">nbm</td>
+                                <td class="table_label">Suspendue</td>
+                                <td class="table_value" id="station_suspended"><span class="bubble_grey">-</span></td>
+                                <td class="table_label">Vélos indisponibles</td>
+                                <td class="table_value" id="bikes_unavailable"><span class="bubble_grey">-</span></td>
                             </tr>
                             <tr>
-                                <td>Hors Service</td>
-                                <td id="station_unavailable">bool</td>
-                                <td>Bornes indisponibles</td>
-                                <td id="bornes_unavailable">nbm</td>
+                                <td class="table_label">Hors Service</td>
+                                <td class="table_value" id="station_unavailable"><span class="bubble_grey">-</span></td>
+                                <td class="table_label">Bornes indisponibles</td>
+                                <td class="table_value" id="bornes_unavailable"><span class="bubble_grey">-</span></td>
                             </tr>
                         </table>
                     </div>

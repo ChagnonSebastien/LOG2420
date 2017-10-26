@@ -53,14 +53,25 @@ function updateActiveStation(stationInformation) {
 }
 
 function updateTable(stationInformation) {
-    document.getElementById("station_id").innerHTML = stationInformation.id;
-    document.getElementById("station_blocked").innerHTML = stationInformation.b;
-    document.getElementById("station_unavailable").innerHTML = stationInformation.m;
-    document.getElementById("station_suspended").innerHTML = stationInformation.su;
-    document.getElementById("bikes_available").innerHTML = stationInformation.da;
-    document.getElementById("bikes_unavailable").innerHTML = stationInformation.dx;
-    document.getElementById("bornes_available").innerHTML = stationInformation.ba;
-    document.getElementById("bornes_unavailable").innerHTML = stationInformation.bx;
+    setNumber("station_id", stationInformation.id, true);
+    setBoolean("station_blocked", stationInformation.b);
+    setBoolean("station_unavailable", stationInformation.m);
+    setBoolean("station_suspended", stationInformation.su);
+    setNumber("bikes_available", stationInformation.da);
+    setNumber("bikes_unavailable", stationInformation.dx, true);
+    setNumber("bornes_available", stationInformation.ba);
+    setNumber("bornes_unavailable", stationInformation.bx, true);
+}
+
+function setNumber(id, value, greyOverride = false) {
+    var bubbleColor = value === 0 ? "red" : "green";
+    bubbleColor = greyOverride ? "grey" : bubbleColor;
+    document.getElementById(id).innerHTML = "<span class=\"bubble_" + bubbleColor + "\">" + value + "</span>";
+}
+
+function setBoolean(id, value) {
+    var bubbleColor = value === "true" ? "red" : "green";
+    document.getElementById(id).innerHTML = "<span class=\"bubble_" + bubbleColor + "\">" + value + "</span>";
 }
 
 function updateMap(stationInformation) {
@@ -76,5 +87,5 @@ function updateMap(stationInformation) {
     marker = new google.maps.Marker(myOptions);
 
     map.setCenter(latlng);
-    map.setZoom(15);
+    map.setZoom(17);
 }
