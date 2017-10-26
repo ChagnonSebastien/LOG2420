@@ -1,0 +1,24 @@
+{
+    "language" : "Francais",
+    "title": "Vélo Montréal",
+    "home": "Acceuil",
+    "map": {
+        "title": "Carte des stations",
+        "localisation": "Localisation",
+        "noSelection": "Aucune Sélection",
+        "stateTable": {
+            "title": "État de la station de vélo",
+            "id": "ID Station",
+            "blocked": "Bloquée",
+            "suspended": "Suspendue",
+            "noService": "Hors Service",
+            "bikesAvailable": "Vélos disponibles",
+            "bikesUnavailable": "Vélos indisponibles",
+            "terminalsAvailable": "Bornes disponibles",
+            "terminalsUnavailable": "Bornes indisponibles"
+        }
+    },
+    "list": {
+        "title": "Liste des stations"
+    }
+}
