@@ -2,6 +2,7 @@ var bixiData;
 var availableTags;
 var map;
 var marker;
+var language;
 
 function initialize() {
     var latlng = new google.maps.LatLng(45.5187, -73.5776);
@@ -36,6 +37,7 @@ function updateStation(name) {
     var stationInformation = this.getStationInformations(index);
     updateTable(stationInformation);
     updateMap(stationInformation);
+    updateActiveStation(stationInformation);
 }
 
 function getIndex(stationName) {
@@ -44,6 +46,10 @@ function getIndex(stationName) {
 
 function getStationInformations(index) {
     return bixiData.stations[index];
+}
+
+function updateActiveStation(stationInformation) {
+    document.getElementById("station_name").innerHTML = stationInformation.s;
 }
 
 function updateTable(stationInformation) {
