@@ -2,7 +2,9 @@ var bixiData;
 var availableTags;
 var map;
 var marker;
-var language;
+
+var language = "en";
+var languageElements = document.getElementsByClassName("languageListener");
 
 function initialize() {
     var latlng = new google.maps.LatLng(45.5187, -73.5776);
@@ -88,4 +90,14 @@ function updateMap(stationInformation) {
 
     map.setCenter(latlng);
     map.setZoom(17);
+}
+
+function french() {
+    language = "fr";
+    $.getJSON('./lang/' + language + '.json', function(data) {
+        console.log(data);
+        for (var i = 0; i < languageElements.length; i++) {
+            console.log(languageElements[0], languageElements[0].getAttribute("languageLabel"));
+        }
+    });
 }
