@@ -21,21 +21,25 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a style="color:white;" class="titre navbar-brand languageListener" href="#" languageLabel="title"> Vélo Montréal </a>
+                <a style="color:white;" class="titre navbar-brand" href="http://localhost:5000/">
+                    <span id="title">Vélo Montréal</span>
+                </a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a style="color: white; background-color: #2450a8; font-size:90%;" href="#">Accueil</a></li>
+                <li class="active">
+                    <a href="http://localhost:5000/" id="home">Accueil</a>
+                </li>
             </ul>
             <a class="nav navbar-nav navbar-right" href="#">
-                <span style="color: white; padding-top: 10px; padding-right:20px;" class="fa fa-globe fa-2x" aria-hidden="true" onclick="french()"></span>
+                <span class="fa fa-globe fa-2x" aria-hidden="true" onclick="toggleLanguage()"></span>
             </a>
         </div>
     </nav>
 
     <div class="container">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#search">Carte des stations</a></li>
-            <li><a data-toggle="tab" href="#list">Liste des stations</a></li>
+            <li class="active"><a data-toggle="tab" href="#search"><span id="map-title">Carte des stations</span></a></li>
+            <li><a data-toggle="tab" href="#list"><span id="list-title">Liste des stations</span></a></li>
         </ul>
 
         <div class="tab-content">
@@ -46,34 +50,34 @@
                             <input id="tags" class="form-control" placeholder="ex: du Mont-Royal / du Parc">
                         </div>
                         <br>
-                        <h3 class="underlined">Localisation:</h3>
-                        <span id="station_name">Aucune Sélection</span>
+                        <h3 class="underlined"><span id="map-localisation">Localisation</span>:</h3>
+                        <div id="station_name"><span id="map-noSelection">Aucune Sélection</span></div>
                     </div>
                     <div class="column left-sidelined col-12 col-md-8">
-                        <h3>État de la station de vélo</h3>
+                        <h3><span id="map-stateTable-title">État de la station de vélo</span></h3>
                         <table>
                             <tr class="impair">
-                                <td class="table_label">ID Station</td>
+                                <td class="table_label"><span id="map-stateTable-id">ID Station</span></td>
                                 <td class="table_value" id="station_id"><span class="bubble_grey">-</span></td>
-                                <td class="table_label">Vélos disponibles</td>
+                                <td class="table_label"><span id="map-stateTable-bikesAvailable">Vélos disponibles</span></td>
                                 <td class="table_value" id="bikes_available"><span class="bubble_grey">-</span></td>
                             </tr>
                             <tr>
-                                <td class="table_label">Bloquée</td>
+                                <td class="table_label"><span id="map-stateTable-blocked">Bloquée</span></td>
                                 <td class="table_value" id="station_blocked"><span class="bubble_grey">-</span></td>
-                                <td class="table_label">Bornes disponibles</td>
+                                <td class="table_label"><span id="map-stateTable-terminalsAvailable">Bornes disponibles</span></td>
                                 <td class="table_value" id="bornes_available"><span class="bubble_grey">-</span></td>
                             </tr>
                             <tr class="impair">
-                                <td class="table_label">Suspendue</td>
+                                <td class="table_label"><span id="map-stateTable-suspended">Suspendue</span></td>
                                 <td class="table_value" id="station_suspended"><span class="bubble_grey">-</span></td>
-                                <td class="table_label">Vélos indisponibles</td>
+                                <td class="table_label"><span id="map-stateTable-bikesUnavailable">Vélos indisponibles</span></td>
                                 <td class="table_value" id="bikes_unavailable"><span class="bubble_grey">-</span></td>
                             </tr>
                             <tr>
-                                <td class="table_label">Hors Service</td>
+                                <td class="table_label"><span id="map-stateTable-noService">Hors Service</span></td>
                                 <td class="table_value" id="station_unavailable"><span class="bubble_grey">-</span></td>
-                                <td class="table_label">Bornes indisponibles</td>
+                                <td class="table_label"><span id="map-stateTable-terminalsUnavailable">Bornes indisponibles</span></td>
                                 <td class="table_value" id="bornes_unavailable"><span class="bubble_grey">-</span></td>
                             </tr>
                         </table>

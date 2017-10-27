@@ -1,0 +1,24 @@
+{
+    "language" : "English",
+    "title": "Bixi Montreal",
+    "home": "Home",
+    "map": {
+        "title": "Map of All Stations",
+        "localisation": "Localisation",
+        "noSelection": "No Selection",
+        "stateTable": {
+            "title": "Station's state",
+            "id": "Bike Station's ID",
+            "blocked": "Bloqued",
+            "suspended": "Suspended",
+            "noService": "Out of Service",
+            "bikesAvailable": "Available Bikes",
+            "bikesUnavailable": "Unabailable Bikes",
+            "terminalsAvailable": "Available Terminals",
+            "terminalsUnavailable": "Unavailable Terminals"
+        }
+    },
+    "list": {
+        "title": "List of All Stations"
+    }
+}

@@ -2,10 +2,16 @@
     font-weight: bold;
 }
 
+#home {
+    color: white;
+    background-color: #2450a8;
+    font-size:90%;
+}
+
 .navbar-default {
     color: white;
     background-color: #2a7ccf;
- }
+}
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
     background-color: #6DD84D;
@@ -14,6 +20,12 @@
 
 .nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover{
     font-weight: bold;
+}
+
+.fa-globe {
+    color: white;
+    padding-top: 10px;
+    padding-right:20px;
 }
 
 .tab-content {

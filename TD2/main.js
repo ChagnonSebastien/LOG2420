@@ -3,8 +3,7 @@ var availableTags;
 var map;
 var marker;
 
-var language = "en";
-var languageElements = document.getElementsByClassName("languageListener");
+var language = "fr";
 
 function initialize() {
     var latlng = new google.maps.LatLng(45.5187, -73.5776);
@@ -92,12 +91,27 @@ function updateMap(stationInformation) {
     map.setZoom(17);
 }
 
-function french() {
-    language = "fr";
+function toggleLanguage() {
+    language = language === "fr" ? "en" : "fr";
+    reloadLanguage();
+}
+
+function reloadLanguage() {
     $.getJSON('./lang/' + language + '.json', function(data) {
-        console.log(data);
-        for (var i = 0; i < languageElements.length; i++) {
-            console.log(languageElements[0], languageElements[0].getAttribute("languageLabel"));
-        }
+        document.getElementById("title").innerText = data.title;
+        document.getElementById("home").innerText = data.home;
+        document.getElementById("map-title").innerText = data.map.title;
+        document.getElementById("map-localisation").innerText = data.map.localisation;
+        document.getElementById("map-noSelection").innerText = data.map.noSelection;
+        document.getElementById("map-stateTable-title").innerText = data.map.stateTable.title;
+        document.getElementById("map-stateTable-id").innerText = data.map.stateTable.id;
+        document.getElementById("map-stateTable-blocked").innerText = data.map.stateTable.blocked;
+        document.getElementById("map-stateTable-suspended").innerText = data.map.stateTable.suspended;
+        document.getElementById("map-stateTable-noService").innerText = data.map.stateTable.noService;
+        document.getElementById("map-stateTable-bikesAvailable").innerText = data.map.stateTable.bikesAvailable;
+        document.getElementById("map-stateTable-bikesUnavailable").innerText = data.map.stateTable.bikesUnavailable;
+        document.getElementById("map-stateTable-terminalsAvailable").innerText = data.map.stateTable.terminalsAvailable;toggleLanguage
+        document.getElementById("map-stateTable-terminalsUnavailable").innerText = data.map.stateTable.terminalsUnavailable;
+        document.getElementById("list-title").innerText = data.list.title;
     });
 }
