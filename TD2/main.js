@@ -1,6 +1,10 @@
-/**********************************************************************
- *                             Bixi data                              *
- **********************************************************************/
+/*****************************************************************************
+*    Nom ......... : main.js                                                 *
+*    Auteur ...... : Sebastien Chagnon #1804702, Genevieve Laroche #1827516  *
+*    Role ........ : Variables et fonctions de  l'application Bixi Helper    *
+*                    qui permet la recherche et l'affichage du statut des    *
+*                    bornes bixi dans la grande région de Montréal.          *    
+*****************************************************************************/
 
 var bixiData, activeStation;
 
@@ -38,7 +42,7 @@ function updateActiveStation(stationInformation) {
 }
 
 /**********************************************************************
- *                            Autocomplete                            *
+ *                   Fonction d'autocompletion                        *
  **********************************************************************/
 
 var availableTags;
@@ -61,7 +65,7 @@ function initializeAutocomplete() {
 }
 
 /**********************************************************************
- *                 Station specific information table                 *
+ *         Tableau d'état de la station de vélo sélectionnée          *
  **********************************************************************/
 
 function updateStationDescriptionTable(stationInformation) {
@@ -89,7 +93,7 @@ function setBoolean(id, value) {
 }
 
 /**********************************************************************
- *                            Map methods                             *
+ *             Méthodes de la carte "Google maps"                     *
  **********************************************************************/
 
 var map, marker;
@@ -126,7 +130,7 @@ function updateMapCenter(coordinates) {
 }
 
 /**********************************************************************
- *                          Language methods                          *
+ *           Méthodes liées à la modification de la langue            *
  **********************************************************************/
 
 var language = "fr";
@@ -174,7 +178,7 @@ function reloadStrings(languageData) {
 }
 
 /**********************************************************************
- *                          Stations table                            *
+ *         Liste de toutes les stations Bixi et leurs états           *
  **********************************************************************/
 
 var tableData, table;
@@ -217,7 +221,7 @@ function loadStationTable(languageData) {
 }
 
 /**********************************************************************
- *                            Initialize                              *
+ *                            Initialisation                          *
  **********************************************************************/
 
 initializeBixiData();

@@ -1,4 +1,12 @@
-﻿<html>
+﻿<!--***************************************************************************-->
+<!--    Nom ......... : index.html                                             -->
+<!--    Auteur ...... : Sebastien Chagnon #1804702, Genevieve Laroche #1827516 -->
+<!--    Rôle ........ : Interface de l'application Bixi Helper qui permet la   -->
+<!--                    recherche et l'affichage du statut des bornes bixi     -->
+<!--                    dans la grande région de Montréal.                     -->
+<!--***************************************************************************-->
+
+<html>
 <head>
     <title>Bixi Helper</title>
     <meta charset="utf-8">
@@ -18,6 +26,10 @@
 </head>
 <body>
 
+    <!--***************************************************************************-->
+    <!--                     Barre de navigation horizontale                       -->
+    <!--***************************************************************************-->
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -36,11 +48,19 @@
         </div>
     </nav>
 
+    <!--***************************************************************************-->
+    <!--                Onglets "Carte des stations/Liste des stations"            -->
+    <!--***************************************************************************-->
+
     <div class="container">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#search"><span id="map-title">Carte des stations</span></a></li>
             <li><a data-toggle="tab" href="#list"><span id="list-title">Liste des stations</span></a></li>
         </ul>
+
+        <!--***************************************************************************-->
+        <!--                     Barre de recherche de stations Bixi                   -->
+        <!--***************************************************************************-->
 
         <div class="tab-content">
             <div id="search" class="tab-pane fade in active">
@@ -53,6 +73,13 @@
                         <h3 class="underlined"><span id="map-localisation">Localisation</span>:</h3>
                         <div id="station_name"><span id="map-noSelection">Aucune Sélection</span></div>
                     </div>
+
+
+                    <!--***************************************************************************-->
+                    <!--        Tableau d'état de la station de vélo sélectionnée                  -->
+                    <!--***************************************************************************-->
+
+
                     <div class="column left-sidelined col-12 col-md-8">
                         <h3><span id="map-stateTable-title">État de la station de vélo</span></h3>
                         <table>
@@ -83,12 +110,21 @@
                         </table>
                     </div>
                 </div>
+
+                <!--***************************************************************************-->
+                <!--          Carte Google Maps permettant l'affichage des stations Bixi       -->
+                <!--***************************************************************************-->
+
                 <div class="row">
                     <div class="column col-12">
                         <div id="map" style="height:500px"></div>
                     </div>
                 </div>
             </div>
+
+            <!--***************************************************************************-->
+            <!--         Liste de toutes les stations Bixi et leurs états                  -->
+            <!--***************************************************************************-->
 
             <div id="list" class="tab-pane fade">
                 <h3 id="list-description">État de toutes les stations de vélos</h3>
