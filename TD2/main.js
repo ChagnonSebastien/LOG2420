@@ -2,7 +2,7 @@ var bixiData;
 var availableTags;
 var map;
 var marker;
-
+var dataTableData;
 var language = "fr";
 
 function initialize() {
@@ -115,3 +115,21 @@ function reloadLanguage() {
         document.getElementById("list-title").innerText = data.list.title;
     });
 }
+
+tableData = data.stations.map(station => {
+    return [station.id, station.s, station.ba, station.da, station.b, station.su];
+})
+
+$(document).ready(function() {
+    $('#dataTable').DataTable( {
+        data: tableData,
+        columns: [
+            { title: "ID" },
+            { title: "Nom de station" },
+            { title: "Vélos disponibles" },
+            { title: "Bornes disponibles" },
+            { title: "État bloqué" },
+            { title: "État suspendu" }
+        ]
+    } );
+} );
