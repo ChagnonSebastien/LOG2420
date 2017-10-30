@@ -1,5 +1,6 @@
 var bixiData;
 var availableTags;
+var tableData;
 var map;
 var marker;
 
@@ -24,6 +25,11 @@ $.getJSON('https://secure.bixi.com/data/stations.json', function(data) {
     availableTags = data.stations.map((station) => {
         return station.s;
     });
+
+    tableData = data.stations.map(station => {
+        return [station.id, station.s, station.ba, station.da, station.b, station.su];
+    })
+    loadTable();
 
     $( "#tags" ).autocomplete(
         {
@@ -113,5 +119,22 @@ function reloadLanguage() {
         document.getElementById("map-stateTable-terminalsAvailable").innerText = data.map.stateTable.terminalsAvailable;toggleLanguage
         document.getElementById("map-stateTable-terminalsUnavailable").innerText = data.map.stateTable.terminalsUnavailable;
         document.getElementById("list-title").innerText = data.list.title;
+    });
+}
+
+function loadTable() {
+    console.log(tableData);
+    $(document).ready(function() {
+        $('#list_table').DataTable( {
+            data: tableData,
+            columns: [
+                { title: "ID" },
+                { title: "Nom Station" },
+                { title: "Vélos disponibles" },
+                { title: "Bornes Disponibles" },
+                { title: "État bloqué" },
+                { title: "État suspendu" }
+            ]
+        } );
     });
 }
