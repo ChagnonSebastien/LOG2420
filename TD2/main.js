@@ -3,7 +3,7 @@ var availableTags;
 var tableData;
 var map;
 var marker;
-
+var dataTableData;
 var language = "fr";
 
 function initialize() {
