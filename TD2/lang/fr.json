@@ -20,6 +20,7 @@
     },
     "list": {
         "title": "Liste des stations",
+        "description": "État de toutes les stations de vélos",
         "id": "ID",
         "stationName": "Nom de la station",
         "bikesAvailable": "Vélos disponibles",
@@ -28,7 +29,7 @@
         "stateSuspended": "État suspendu"
     },
     "general": {
-        "yes": "oui",
-        "no": "non"
+        "yes": "Oui",
+        "no": "Non"
     }
 }

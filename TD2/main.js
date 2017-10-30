@@ -8,17 +8,21 @@ function initializeBixiData(name) {
     $.getJSON('https://secure.bixi.com/data/stations.json', function(data) {
         bixiData = data;
 
+        parseAutocompleteData(data);
+        initializeAutocomplete();
+
         parseDataForTable(data);
-        loadStationTable();
+        reloadLanguage();
     });
 }
 
 function updateStation(name) {
     var index = this.getIndex(name);
-    var stationInformation = this.getStationInformations(index);
-    updateStationDescriptionTable(stationInformation);
-    updateStationOnMap(stationInformation);
-    updateActiveStation(stationInformation);
+    activeStation = this.getStationInformations(index);
+    
+    updateStationDescriptionTable(activeStation);
+    updateStationOnMap(activeStation);
+    updateActiveStation(activeStation);
 }
 
 function getIndex(stationName) {
@@ -40,12 +44,12 @@ function updateActiveStation(stationInformation) {
 var availableTags;
 
 function parseAutocompleteData(bixiData) {
-    availableTags = data.stations.map((station) => {
+    availableTags = bixiData.stations.map((station) => {
         return station.s;
     });
 }
 
-function initializeAutocomplete(bixiData) {
+function initializeAutocomplete() {
     $( "#tags" ).autocomplete(
         {
             source: availableTags,
@@ -75,7 +79,7 @@ function setNumber(id, value, greyOverride = false) {
     var bubbleColor = value === 0 ? "red" : "green";
     bubbleColor = greyOverride ? "grey" : bubbleColor;
     document.getElementById(id).innerHTML =
-        "<span class=\"bubble_" + bubbleColor + "\">" + getBooleanLanguageAlternative(value) + "</span>";
+        "<span class=\"bubble_" + bubbleColor + "\">" + value + "</span>";
 }
 
 function setBoolean(id, value) {
@@ -89,7 +93,6 @@ function setBoolean(id, value) {
  **********************************************************************/
 
 var map, marker;
-google.maps.event.addDomListener(window, "load", initializeMap);
 
 function initializeMap() {
     var coordinates = new google.maps.LatLng(45.5187, -73.5776);
@@ -128,7 +131,6 @@ function updateMapCenter(coordinates) {
 
 var language = "fr";
 var languageGeneralData;
-reloadLanguage();
 
 function toggleLanguage() {
     language = language === "fr" ? "en" : "fr";
@@ -139,34 +141,19 @@ function reloadLanguage() {
     $.getJSON('./lang/' + language + '.json', function(languageData) {
         languageGeneralData = languageData.general;
         reloadStrings(languageData);
-        loadStationTable(tableData, languageData);
+        loadStationTable(languageData);
     });
 }
 
-function reloadStrings(languageData) {
-    reloadMiscStrings(languageData);
-    reloadStationDescriptionTableStrings(languageData);
-    reloadStationsStrings(languageData);
-}
-
-function reloadStationDescriptionTableStrings(generalLanguageData) {
-
-}
-
 function getBooleanLanguageAlternative(value) {
-    return value ? generalLanguageData.yes : generalLanguageData.no;
+    return value ? languageGeneralData.yes : languageGeneralData.no;
 }
 
-function reloadStationsStrings(languageData) {
-
-}
-
-function reloadMiscStrings(languageData) {
+function reloadStrings(languageData) {
     document.getElementById("title").innerText = languageData.title;
     document.getElementById("home").innerText = languageData.home;
     document.getElementById("map-title").innerText = languageData.map.title;
     document.getElementById("map-localisation").innerText = languageData.map.localisation;
-    document.getElementById("map-noSelection").innerText = languageData.map.noSelection;
     document.getElementById("map-stateTable-title").innerText = languageData.map.stateTable.title;
     document.getElementById("map-stateTable-id").innerText = languageData.map.stateTable.id;
     document.getElementById("map-stateTable-blocked").innerText = languageData.map.stateTable.blocked;
@@ -177,24 +164,46 @@ function reloadMiscStrings(languageData) {
     document.getElementById("map-stateTable-terminalsAvailable").innerText = languageData.map.stateTable.terminalsAvailable;toggleLanguage
     document.getElementById("map-stateTable-terminalsUnavailable").innerText = languageData.map.stateTable.terminalsUnavailable;
     document.getElementById("list-title").innerText = languageData.list.title;
+    document.getElementById("list-description").innerText = languageData.list.description;
+
+    if (activeStation === undefined) {
+        document.getElementById("map-noSelection").innerText = languageData.map.noSelection;
+    } else {
+        updateStationDescriptionTable(activeStation);
+    }
 }
 
 /**********************************************************************
  *                          Stations table                            *
  **********************************************************************/
 
-var tableData;
+var tableData, table;
 
 function parseDataForTable(bixiData) {
-    tableData = data.stations.map(station => {
+    tableData = bixiData.stations.map(station => {
         return [station.id, station.s, station.ba, station.da, station.b, station.su];
     })
 }
 
-function loadStationTable(tableData, languageData) {
-    $(document).ready(function() {
-        $('#list_table').DataTable( {
-            data: tableData,
+function loadStationTable(languageData) {
+    $.getJSON(
+        language === "fr" ?
+        'http://cdn.datatables.net/plug-ins/1.10.13/i18n/French.json' :
+        'https://cdn.datatables.net/plug-ins/1.10.13/i18n/English.json',
+    function(tableLanguage) {
+        table = $('#list_table').DataTable( {
+            language: tableLanguage,
+            data: tableData.map(station => {
+                return [
+                    station[0],
+                    station[1],
+                    station [2],
+                    station[3],
+                    getBooleanLanguageAlternative(station[4]),
+                    getBooleanLanguageAlternative(station[5])
+                ]
+            }),
+            destroy: true,
             columns: [
                 { title: languageData.list.id },
                 { title: languageData.list.stationName },
@@ -203,10 +212,14 @@ function loadStationTable(tableData, languageData) {
                 { title: languageData.list.stateBlocked },
                 { title: languageData.list.stateSuspended }
             ]
-        } );
+        });
     });
 }
 
 /**********************************************************************
  *                            Initialize                              *
  **********************************************************************/
+
+initializeBixiData();
+initializeAutocomplete();
+initializeMap();

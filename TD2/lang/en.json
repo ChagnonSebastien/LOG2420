@@ -20,6 +20,7 @@
     },
     "list": {
         "title": "List of all stations",
+        "description": "All bike stations' states",
         "id": "ID",
         "stationName": "Station's name",
         "bikesAvailable": "Available bikes",
@@ -28,7 +29,7 @@
         "stateSuspended": "Suspended state"
     },
     "general": {
-        "yes": "yes",
-        "no": "no"
+        "yes": "Yes",
+        "no": "No"
     }
 }
