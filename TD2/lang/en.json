@@ -3,22 +3,32 @@
     "title": "Bixi Montreal",
     "home": "Home",
     "map": {
-        "title": "Map of All Stations",
+        "title": "Map of all Stations",
         "localisation": "Localisation",
         "noSelection": "No Selection",
         "stateTable": {
             "title": "Station's state",
-            "id": "Bike Station's ID",
+            "id": "Bike station's ID",
             "blocked": "Bloqued",
             "suspended": "Suspended",
-            "noService": "Out of Service",
-            "bikesAvailable": "Available Bikes",
-            "bikesUnavailable": "Unabailable Bikes",
-            "terminalsAvailable": "Available Terminals",
-            "terminalsUnavailable": "Unavailable Terminals"
+            "noService": "Out of service",
+            "bikesAvailable": "Available bikes",
+            "bikesUnavailable": "Unabailable bikes",
+            "terminalsAvailable": "Available terminals",
+            "terminalsUnavailable": "Unavailable terminals"
         }
     },
     "list": {
-        "title": "List of All Stations"
+        "title": "List of all stations",
+        "id": "ID",
+        "stationName": "Station's name",
+        "bikesAvailable": "Available bikes",
+        "terminalsAvailable": "Available terminals",
+        "stateBlocked": "Blocked state",
+        "stateSuspended": "Suspended state"
+    },
+    "general": {
+        "yes": "yes",
+        "no": "no"
     }
 }

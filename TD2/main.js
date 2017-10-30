@@ -1,49 +1,23 @@
-var bixiData;
-var availableTags;
-var tableData;
-var map;
-var marker;
-var dataTableData;
-var language = "fr";
+/**********************************************************************
+ *                             Bixi data                              *
+ **********************************************************************/
 
-function initialize() {
-    var latlng = new google.maps.LatLng(45.5187, -73.5776);
-    var myOptions = {
-        zoom: 10,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById("map"),
-            myOptions);
-}
+var bixiData, activeStation;
 
-google.maps.event.addDomListener(window, "load", initialize);
+function initializeBixiData(name) {
+    $.getJSON('https://secure.bixi.com/data/stations.json', function(data) {
+        bixiData = data;
 
-$.getJSON('https://secure.bixi.com/data/stations.json', function(data) {
-    bixiData = data;
-
-    availableTags = data.stations.map((station) => {
-        return station.s;
+        parseDataForTable(data);
+        loadStationTable();
     });
-
-    tableData = data.stations.map(station => {
-        return [station.id, station.s, station.ba, station.da, station.b, station.su];
-    })
-    loadTable();
-
-    $( "#tags" ).autocomplete(
-        {
-            source: availableTags,
-            select: function( event, ui ) {updateStation(ui.item.value)}
-        }
-    );
-});
+}
 
 function updateStation(name) {
     var index = this.getIndex(name);
     var stationInformation = this.getStationInformations(index);
-    updateTable(stationInformation);
-    updateMap(stationInformation);
+    updateStationDescriptionTable(stationInformation);
+    updateStationOnMap(stationInformation);
     updateActiveStation(stationInformation);
 }
 
@@ -59,7 +33,34 @@ function updateActiveStation(stationInformation) {
     document.getElementById("station_name").innerHTML = stationInformation.s;
 }
 
-function updateTable(stationInformation) {
+/**********************************************************************
+ *                            Autocomplete                            *
+ **********************************************************************/
+
+var availableTags;
+
+function parseAutocompleteData(bixiData) {
+    availableTags = data.stations.map((station) => {
+        return station.s;
+    });
+}
+
+function initializeAutocomplete(bixiData) {
+    $( "#tags" ).autocomplete(
+        {
+            source: availableTags,
+            select: function( event, ui ) {
+                updateStation(ui.item.value)
+            }
+        }
+    );
+}
+
+/**********************************************************************
+ *                 Station specific information table                 *
+ **********************************************************************/
+
+function updateStationDescriptionTable(stationInformation) {
     setNumber("station_id", stationInformation.id, true);
     setBoolean("station_blocked", stationInformation.b);
     setBoolean("station_unavailable", stationInformation.m);
@@ -73,29 +74,61 @@ function updateTable(stationInformation) {
 function setNumber(id, value, greyOverride = false) {
     var bubbleColor = value === 0 ? "red" : "green";
     bubbleColor = greyOverride ? "grey" : bubbleColor;
-    document.getElementById(id).innerHTML = "<span class=\"bubble_" + bubbleColor + "\">" + value + "</span>";
+    document.getElementById(id).innerHTML =
+        "<span class=\"bubble_" + bubbleColor + "\">" + getBooleanLanguageAlternative(value) + "</span>";
 }
 
 function setBoolean(id, value) {
     var bubbleColor = value === "true" ? "red" : "green";
-    document.getElementById(id).innerHTML = "<span class=\"bubble_" + bubbleColor + "\">" + value + "</span>";
+    document.getElementById(id).innerHTML =
+        "<span class=\"bubble_" + bubbleColor + "\">" + getBooleanLanguageAlternative(value) + "</span>";
 }
 
-function updateMap(stationInformation) {
+/**********************************************************************
+ *                            Map methods                             *
+ **********************************************************************/
+
+var map, marker;
+google.maps.event.addDomListener(window, "load", initializeMap);
+
+function initializeMap() {
+    var coordinates = new google.maps.LatLng(45.5187, -73.5776);
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 10,
+        center: coordinates,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+}
+
+function updateStationOnMap(stationInformation) {
+    var coordinates = new google.maps.LatLng(stationInformation.la, stationInformation.lo);
+    updateMarker(coordinates);
+    updateMapCenter(coordinates);
+}
+
+function updateMarker(coordinates) {
     if (marker !== undefined) {
         marker.setVisible(false);
     }
 
-    var latlng = new google.maps.LatLng(stationInformation.la, stationInformation.lo);
-    var myOptions = {
+    marker = new google.maps.Marker({
         map,
-        position: latlng
-    }
-    marker = new google.maps.Marker(myOptions);
+        position: coordinates
+    });
+}
 
-    map.setCenter(latlng);
+function updateMapCenter(coordinates) {
+    map.setCenter(coordinates);
     map.setZoom(17);
 }
+
+/**********************************************************************
+ *                          Language methods                          *
+ **********************************************************************/
+
+var language = "fr";
+var languageGeneralData;
+reloadLanguage();
 
 function toggleLanguage() {
     language = language === "fr" ? "en" : "fr";
@@ -103,38 +136,77 @@ function toggleLanguage() {
 }
 
 function reloadLanguage() {
-    $.getJSON('./lang/' + language + '.json', function(data) {
-        document.getElementById("title").innerText = data.title;
-        document.getElementById("home").innerText = data.home;
-        document.getElementById("map-title").innerText = data.map.title;
-        document.getElementById("map-localisation").innerText = data.map.localisation;
-        document.getElementById("map-noSelection").innerText = data.map.noSelection;
-        document.getElementById("map-stateTable-title").innerText = data.map.stateTable.title;
-        document.getElementById("map-stateTable-id").innerText = data.map.stateTable.id;
-        document.getElementById("map-stateTable-blocked").innerText = data.map.stateTable.blocked;
-        document.getElementById("map-stateTable-suspended").innerText = data.map.stateTable.suspended;
-        document.getElementById("map-stateTable-noService").innerText = data.map.stateTable.noService;
-        document.getElementById("map-stateTable-bikesAvailable").innerText = data.map.stateTable.bikesAvailable;
-        document.getElementById("map-stateTable-bikesUnavailable").innerText = data.map.stateTable.bikesUnavailable;
-        document.getElementById("map-stateTable-terminalsAvailable").innerText = data.map.stateTable.terminalsAvailable;toggleLanguage
-        document.getElementById("map-stateTable-terminalsUnavailable").innerText = data.map.stateTable.terminalsUnavailable;
-        document.getElementById("list-title").innerText = data.list.title;
+    $.getJSON('./lang/' + language + '.json', function(languageData) {
+        languageGeneralData = languageData.general;
+        reloadStrings(languageData);
+        loadStationTable(tableData, languageData);
     });
 }
 
-function loadTable() {
-    console.log(tableData);
+function reloadStrings(languageData) {
+    reloadMiscStrings(languageData);
+    reloadStationDescriptionTableStrings(languageData);
+    reloadStationsStrings(languageData);
+}
+
+function reloadStationDescriptionTableStrings(generalLanguageData) {
+
+}
+
+function getBooleanLanguageAlternative(value) {
+    return value ? generalLanguageData.yes : generalLanguageData.no;
+}
+
+function reloadStationsStrings(languageData) {
+
+}
+
+function reloadMiscStrings(languageData) {
+    document.getElementById("title").innerText = languageData.title;
+    document.getElementById("home").innerText = languageData.home;
+    document.getElementById("map-title").innerText = languageData.map.title;
+    document.getElementById("map-localisation").innerText = languageData.map.localisation;
+    document.getElementById("map-noSelection").innerText = languageData.map.noSelection;
+    document.getElementById("map-stateTable-title").innerText = languageData.map.stateTable.title;
+    document.getElementById("map-stateTable-id").innerText = languageData.map.stateTable.id;
+    document.getElementById("map-stateTable-blocked").innerText = languageData.map.stateTable.blocked;
+    document.getElementById("map-stateTable-suspended").innerText = languageData.map.stateTable.suspended;
+    document.getElementById("map-stateTable-noService").innerText = languageData.map.stateTable.noService;
+    document.getElementById("map-stateTable-bikesAvailable").innerText = languageData.map.stateTable.bikesAvailable;
+    document.getElementById("map-stateTable-bikesUnavailable").innerText = languageData.map.stateTable.bikesUnavailable;
+    document.getElementById("map-stateTable-terminalsAvailable").innerText = languageData.map.stateTable.terminalsAvailable;toggleLanguage
+    document.getElementById("map-stateTable-terminalsUnavailable").innerText = languageData.map.stateTable.terminalsUnavailable;
+    document.getElementById("list-title").innerText = languageData.list.title;
+}
+
+/**********************************************************************
+ *                          Stations table                            *
+ **********************************************************************/
+
+var tableData;
+
+function parseDataForTable(bixiData) {
+    tableData = data.stations.map(station => {
+        return [station.id, station.s, station.ba, station.da, station.b, station.su];
+    })
+}
+
+function loadStationTable(tableData, languageData) {
     $(document).ready(function() {
         $('#list_table').DataTable( {
             data: tableData,
             columns: [
-                { title: "ID" },
-                { title: "Nom Station" },
-                { title: "Vélos disponibles" },
-                { title: "Bornes Disponibles" },
-                { title: "État bloqué" },
-                { title: "État suspendu" }
+                { title: languageData.list.id },
+                { title: languageData.list.stationName },
+                { title: languageData.list.bikesAvailable },
+                { title: languageData.list.terminalsAvailable },
+                { title: languageData.list.stateBlocked },
+                { title: languageData.list.stateSuspended }
             ]
         } );
     });
 }
+
+/**********************************************************************
+ *                            Initialize                              *
+ **********************************************************************/

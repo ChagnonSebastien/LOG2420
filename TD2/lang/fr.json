@@ -19,6 +19,16 @@
         }
     },
     "list": {
-        "title": "Liste des stations"
+        "title": "Liste des stations",
+        "id": "ID",
+        "stationName": "Nom de la station",
+        "bikesAvailable": "Vélos disponibles",
+        "terminalsAvailable": "Bornes disponibles",
+        "stateBlocked": "État bloqué",
+        "stateSuspended": "État suspendu"
+    },
+    "general": {
+        "yes": "oui",
+        "no": "non"
     }
 }
