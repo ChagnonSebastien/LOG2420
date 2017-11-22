@@ -1,6 +1,47 @@
 /****************************************************************************
 *    Nom ......... : Thermostat.css                                         *
 *    Auteur ...... : Sebastien Chagnon #1804702, Genevieve Laroche #1827516 *
-*    Role ........ : Définit le style de l'application Thermostat           *    
+*    Role ........ : Definit le style de l'application Thermostat           *    
 *****************************************************************************/
 
+body {
+    background-color: #c2c2c2;
+}
+
+#view {
+    background-color: lightgray;
+    border:5px solid #777777;
+    border-radius: 20px;
+}
+
+#info_panel {
+    margin-top: 80px;
+}
+
+.info_panel_row {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.info_panel_col {
+    margin: 0;
+    border: 2px solid black;
+    padding: 10px 0 10px 3px;
+}
+
+#thermometer {
+    border:5px solid black;
+    border-radius: 10px;
+    background-color:white;
+    margin: 20px auto;
+}
+
+#thermostat {
+    height: 300px;
+    margin: 20px auto;
+}
+
+.text_center {
+    text-align: center;
+}

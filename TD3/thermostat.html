@@ -1,11 +1,64 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="utf-8">
+    <title>TD3 - Thermostat</title>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/dist/jquery-ui-slider-pips.js"></script>
+    <script type="text/javascript" charset="utf8" src="./Chambre.js"></script>
+    <script type="text/javascript" charset="utf8" src="./thermostat.js"defer></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/dist/jquery-ui-slider-pips.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" href="./thermostat.css">
 </head>
 <body>
+
+    <div class="container">
+        <div class="row" id="view">
+            <div class="col-3 text_center">
+                <center><canvas id="thermometer" height="300px" width="30px">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas></center>
+                Thermomètre
+            </div>
+            <div class="col-6" id="info_panel">
+                <div class="row info_panel_row">
+                    <div class="col-sm info_panel_col">
+                        Chauffage
+                    </div>
+                    <div class="col-sm info_panel_col" id="heatingActivation">
+                        Actif
+                    </div>
+                </div>
+                <div class="row info_panel_row">
+                    <div class="col-sm info_panel_col">
+                        Température extérieur
+                    </div>
+                    <div class="col-sm info_panel_col" id ="exteriorTemperature">
+                        0
+                    </div>
+                </div>
+                <div class="row info_panel_row">
+                    <div class="col-sm info_panel_col">
+                        Thermostat
+                    </div>
+                    <div class="col-sm info_panel_col" id="tdValeurThermostat">
+                        20
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 text_center">
+                <div id="thermostat"></div>
+                Thermostat
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>
